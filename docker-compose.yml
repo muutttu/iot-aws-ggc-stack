@@ -5,7 +5,7 @@ services:
     build:
       context: ./web
       dockerfile: Dockerfile
-    image: webapp:init
+    image: ggc-stack/webapp:0.1-beta
     network_mode: bridge
     ports:
       - 5000:5000
