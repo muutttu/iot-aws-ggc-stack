@@ -1,6 +1,10 @@
 # Set base image (host OS)
 FROM python:3.9-slim-buster
 
+# Set one or more individual labels
+LABEL version="0.0.1-beta"
+LABEL author="muutttu@live.fi"
+
 # Set environment variables in the container
 ENV LANG C.UTF-8
 
