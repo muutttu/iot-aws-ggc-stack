@@ -14,16 +14,15 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install any dependencies
-RUN apt-get -y update
-RUN apt-get install -y python3-pip build-essential
+RUN apt -y update
+RUN apt -y install python3-pip build-essential
 RUN pip install -r requirements.txt
-#RUN pip3 install -r requirements.txt
 
 # Copy the app.py file to the current working directory
 COPY app.py .
 
 # Specify the command to run on container start
-CMD [ "python", "./app.py" ]
-#CMD ["app.py"]
+CMD ["app.py"]
 
+# Sets the image’s main command
 ENTRYPOINT ["python3"]
