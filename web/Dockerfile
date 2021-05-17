@@ -7,10 +7,7 @@ ENV LANG C.UTF-8
 # By default, listen on port 5000 (Flask)
 EXPOSE 5000/tcp
 
-# Create the app folder in the container
-RUN mkdir app
-
-# Set the working directory in the container for further commands
+# Creates and sets the working directory in the container for further commands
 WORKDIR /app
 
 # Copy the dependencies file to the current working directory
