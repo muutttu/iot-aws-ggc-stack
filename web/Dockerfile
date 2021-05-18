@@ -26,7 +26,8 @@ RUN pip install -r requirements.txt
 COPY app.py .
 
 # Specify the command to run on container start
-CMD ["app.py"]
+#CMD ["app.py"]
+CMD ["gunicorn", "-w", "3", "-b", ":5000", "-t", "360", "--reload", "api.wsgi:app"]
 
 # Sets the image’s main command
-ENTRYPOINT ["python3"]
+#ENTRYPOINT ["python3"]
