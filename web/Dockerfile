@@ -8,29 +8,26 @@ LABEL author="muutttu@live.fi"
 # Set environment variables in the container
 ENV LANG C.UTF-8
 
-# By default, listen on port 5000 (Flask)
-#EXPOSE 5000/tcp
+# Set container to listen on port 5000 (Flask) inside docker
+EXPOSE 5000/tcp
 
 # Creates and sets the working directory in the container for further commands
 WORKDIR /app
 
-# Copy the dependencies file to the current working directory
-COPY requirements.txt .
+# Copy the App files to the current working directory
+COPY requirements.txt \
+    __init.py__ \
+    app.py \
+    wsgi.py \
+    ./
 
 # Install any dependencies
 RUN apt -y update
 RUN apt -y install python3-pip build-essential
 RUN pip3 install -r requirements.txt
 
-# Copy the app.py file to the current working directory
-COPY app.py .
-
 # Specify the command to run on container start
-#CMD ["app.py"]
-#WORKDIR /
 CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:5000", "-t", "360", "--reload", "wsgi:app"]
-#CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "wsgi"]
 
 # Sets the image’s main command
 #ENTRYPOINT ["python3"]
-#ENTRYPOINT ["gunicorn"]
