@@ -1,5 +1,5 @@
 # Set base image (host OS)
-from ubuntu:latest
+FROM ubuntu:latest
 
 # Set one or more individual labels
 LABEL version="0.0.1-beta"
