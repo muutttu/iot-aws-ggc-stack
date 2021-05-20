@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    container_name: flask_app
+    container_name: flask-webui
     build:
       context: ./web
       dockerfile: Dockerfile
@@ -26,13 +26,18 @@ services:
     restart: on-failure
 
   ggc:
-    container_name: ggc_iot_core
+    container_name: aws-iot-greengrass
     build:
       context: ./ggc
       dockerfile: Dockerfile
     image: ggc-stack/ggciotcore:0.1-beta
+    volumes:
+      - /services/ggc/certs/:/greengrass/certs
+      - /services/ggc/config:/greengrass/config
     networks:
       - ggcnetwork
+    ports:
+      - "8883:8883"
     restart: on-failure
 
 networks:
