@@ -25,5 +25,15 @@ services:
       - "80:8080"
     restart: on-failure
 
+    ggc:
+      container_name: ggc_iot_core
+      build:
+        context: ./ggc
+        dockerfile: Dockerfile
+      image: ggc-stack/ggciotcore:0.1-beta
+      networks:
+        - ggcnetwork
+      restart: on-failure
+
 networks:
   ggcnetwork:
