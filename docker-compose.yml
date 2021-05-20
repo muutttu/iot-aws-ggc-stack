@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    container_name: flask-webui
+    container_name: flask-app
     build:
       context: ./web
       dockerfile: Dockerfile
