@@ -26,11 +26,12 @@ services:
     restart: on-failure
 
   ggc:
+    init: true
     container_name: aws-iot-greengrass
     build:
       context: ./ggc
       dockerfile: Dockerfile
-    image: ggc-stack/ggciotcore:0.1-beta
+    image: ggc-stack/aws-iot-greengrass:2.1.0
     volumes:
       - /services/ggc/certs/:/greengrass/certs
       - /services/ggc/config:/greengrass/config
