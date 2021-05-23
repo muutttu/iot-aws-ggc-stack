@@ -33,8 +33,9 @@ services:
       dockerfile: Dockerfile
     image: ggc-stack/aws-iot-greengrass:2.1.0
     volumes:
-      - /services/ggc/certs/:/greengrass/certs
-      - /services/ggc/config:/greengrass/config
+      - /iot-aws-ggc-stack/services/ggc/certs:/greengrass/certs
+      - /iot-aws-ggc-stack/services/ggc/config:/greengrass/config
+      - /iot-aws-ggc-stack/services/ggc/credentials:/root/.aws
     networks:
       - ggcnetwork
     ports:
