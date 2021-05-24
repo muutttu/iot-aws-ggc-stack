@@ -42,5 +42,20 @@ services:
       - "8883:8883"
     restart: on-failure
 
+  node-red:
+    container_name: nodered
+    build:
+      context: ./nodered
+      dockerfile: Dockerfile
+    image: ggc-stack/node-red:latest
+    volumes:
+      - /iot-aws-ggc-stack/nodered/data:/data
+    environment:
+      - TZ=Europe/Helsinki
+    ports:
+      - "1880:1880"
+    networks:
+      - ggcnetwork
+
 networks:
   ggcnetwork:
