@@ -52,6 +52,8 @@ services:
       - /iot-aws-ggc-stack/nodered/data:/data
     environment:
       - TZ=Europe/Helsinki
+      #- NODE_OPTIONS="--max-old-space-size=128"
+      - FLOWS=flows.json
     ports:
       - "1880:1880"
     networks:
